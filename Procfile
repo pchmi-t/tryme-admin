@@ -1,1 +1,1 @@
-web: gunicorn trymeadmin.wsgi:application --log-file -
+web: gunicorn trymeadmin.wsgi

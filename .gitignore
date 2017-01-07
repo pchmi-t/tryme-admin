@@ -30,6 +30,10 @@ var/
 *.manifest
 *.spec
 
+#Django
+migrations/
+db.sqlite3
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt

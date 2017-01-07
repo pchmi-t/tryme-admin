@@ -12,7 +12,7 @@ def all_categories(request):
     for category in categories:
         categories_data = model_to_dict(category)
         categories_data['tests_count'] = Test.objects.filter(category__id=category.id).count()
-    return serializers.serialize("json", categories_data)
+    return categories_data
 
 @jsonrpc_method('tests_for_category')
 def tests_for_category(request, category_id):

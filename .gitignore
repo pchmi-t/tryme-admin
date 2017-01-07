@@ -12,6 +12,7 @@ env/
 build/
 develop-eggs/
 dist/
+db.sqlite3
 downloads/
 eggs/
 .eggs/
@@ -23,6 +24,9 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+
+#Django
+migrations/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

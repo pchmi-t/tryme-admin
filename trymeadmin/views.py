@@ -6,7 +6,13 @@ from trymeadmin.models import Test, Category, Question, Answer
 
 @jsonrpc_method('all_categories')
 def all_categories(request):
-  return serializers.serialize("json", Category.objects.all())
+    categories = Category.objects.all()
+    
+    categories_data = []
+    for category in categories:
+        categories_data = model_to_dict(category)
+        categories_data['tests_count'] = Test.objects.filter(category__id=category.id).count()
+    return serializers.serialize("json", categories_data)
 
 @jsonrpc_method('tests_for_category')
 def tests_for_category(request, category_id):

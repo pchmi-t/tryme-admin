@@ -76,7 +76,9 @@ WSGI_APPLICATION = 'trymeadmin.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 database_url = os.environ['DATABASE_URL']
-DATABASES['default'] = dj_database_url.parse(database_url, conn_max_age=600)
+DATABASES = {
+    'default': dj_database_url.parse(database_url, conn_max_age=600)
+}
 
 
 # Password validation

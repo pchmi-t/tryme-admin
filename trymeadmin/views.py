@@ -30,6 +30,7 @@ def tests_for_category(request, category_id):
     for test in tests:
         test_data = model_to_dict(test)
         test_data['category'] = category_data
+        tests_data.append(test_data)
     return tests_data
 
 @jsonrpc_method('get_test')

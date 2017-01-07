@@ -18,8 +18,19 @@ def all_categories(request):
 
 @jsonrpc_method('tests_for_category')
 def tests_for_category(request, category_id):
+    try:
+        category = Category.objects.get(pk=category_id)
+    except Category.DoesNotExist:
+        raise Http404("Category does not exist")
+    
     tests = Test.objects.filter(category__id=category_id)
-    return list(map(model_to_dict, tests))
+    
+    category_data = model_to_dict(category)
+    tests_data = []
+    for test in tests:
+        test_data = model_to_dict(test)
+        test_data['category'] = category_data
+    return tests_data
 
 @jsonrpc_method('get_test')
 def get_test(request, test_id):

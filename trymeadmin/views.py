@@ -19,7 +19,7 @@ def all_categories(request):
 @jsonrpc_method('tests_for_category')
 def tests_for_category(request, category_id):
     tests = Test.objects.filter(category__id=category_id)
-    return serializers.serialize("json", tests)
+    return serializers.serialize("json", list(map(model_to_dict, tests)))
 
 @jsonrpc_method('get_test')
 def get_test(request, test_id):

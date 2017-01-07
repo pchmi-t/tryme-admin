@@ -26,11 +26,13 @@ def tests_for_category(request, category_id):
     tests = Test.objects.filter(category__id=category_id)
     
     category_data = model_to_dict(category)
+    
     tests_data = []
     for test in tests:
         test_data = model_to_dict(test)
         test_data['category'] = category_data
         tests_data.append(test_data)
+    category_data['tests_count'] = len(tests_data)
     return tests_data
 
 @jsonrpc_method('get_test')

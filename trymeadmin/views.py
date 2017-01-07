@@ -1,4 +1,5 @@
 from jsonrpc import jsonrpc_method
+from django.http import HttpResponse
 from django.core import serializers
 from django.forms.models import model_to_dict
 from trymeadmin.models import Test, Category, Question, Answer

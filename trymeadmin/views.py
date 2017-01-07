@@ -10,8 +10,9 @@ def all_categories(request):
     
     categories_data = []
     for category in categories:
-        categories_data = model_to_dict(category)
-        categories_data['tests_count'] = Test.objects.filter(category__id=category.id).count()
+        category_data = model_to_dict(category)
+        category_data['tests_count'] = Test.objects.filter(category__id=category.id).count()
+        categories_data.append(category_data)
     return categories_data
 
 @jsonrpc_method('tests_for_category')
